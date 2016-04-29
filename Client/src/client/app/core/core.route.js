@@ -6,9 +6,14 @@
     .run(appRun);
 
   /* @ngInject */
-  function appRun(routerHelper) {
+  function appRun(routerHelper, $stormpath) {
     var otherwise = '/404';
     routerHelper.configureStates(getStates(), otherwise);
+
+    $stormpath.uiRouter({
+      loginState: 'login',
+      defaultPostLoginState: 'dashboard'
+    });
   }
 
   function getStates() {

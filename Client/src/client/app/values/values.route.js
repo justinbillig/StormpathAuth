@@ -16,7 +16,7 @@
       {
         state: 'values',
         config: {
-          url: '/Values',
+          url: '/values',
           templateUrl: 'app/Values/Values.html',
           controller: 'ValuesController',
           controllerAs: 'vm',
@@ -24,6 +24,9 @@
           settings: {
             nav: 3,
             content: '<i class="fa fa-lock"></i> Values'
+          },
+          sp: {
+            authenticate: true
           }
         }
       }

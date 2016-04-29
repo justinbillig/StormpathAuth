@@ -7,7 +7,8 @@
     'app.admin',
     'app.dashboard',
     'app.values',
-    'app.layout'
+    'app.layout',
+    'app.login'
   ]);
 
 })();
