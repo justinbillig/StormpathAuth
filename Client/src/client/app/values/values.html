@@ -5,7 +5,9 @@
         <div class="widget wviolet">
           <div ht-widget-header title="{{vm.title}}"></div>
           <div class="widget-content user">
-            <h3>TODO: Implement Your Values Features</h3>
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="v in vm.values">{{ v }}</li>
+              </ul>
           </div>
           <div class="widget-foot">
             <div class="clearfix"></div>

@@ -4,6 +4,7 @@ var data = require('./data');
 
 router.get('/people', getPeople);
 router.get('/person/:id', getPerson);
+router.get('/values', getValues);
 router.get('/*', four0four.notFoundMiddleware);
 
 module.exports = router;
@@ -12,6 +13,10 @@ module.exports = router;
 
 function getPeople(req, res, next) {
   res.status(200).send(data.people);
+}
+
+function getValues(req, res, next) {
+  res.status(200).send(data.values);
 }
 
 function getPerson(req, res, next) {

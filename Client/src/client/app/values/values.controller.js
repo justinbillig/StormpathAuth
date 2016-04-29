@@ -2,19 +2,29 @@
   'use strict';
 
   angular
-    .module('app.admin')
+    .module('app.values')
     .controller('ValuesController', ValuesController);
 
-  AdminController.$inject = ['logger'];
+  ValuesController.$inject = ['$q', 'dataservice', 'logger'];
   /* @ngInject */
-  function ValuesController(logger) {
+  function ValuesController($q, dataservice, logger) {
     var vm = this;
     vm.title = 'Values';
 
     activate();
 
     function activate() {
-      logger.info('Activated Values View');
+      var promises = [getValues()];
+      return $q.all(promises).then(function() {
+        logger.info('Activated Values View');
+      });
+    }
+
+    function getValues() {
+      return dataservice.getValues().then(function(data) {
+        vm.values = data;
+        return vm.values;
+      });
     }
   }
 })();
