@@ -33,8 +33,8 @@
     }
 
     function getValues() {
-      //http://localhost:53175/api/values
-      return $http.get('api/values')
+      //http://localhost:53175/
+      return $http.get('http://localhost:53175/api/values')
         .then(success)
         .catch(fail);
 
