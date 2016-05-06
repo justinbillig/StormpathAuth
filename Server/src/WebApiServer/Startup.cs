@@ -33,7 +33,11 @@ namespace WebApiServer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowCredentials());
+            app.UseCors(builder => builder
+                .WithOrigins("http://localhost:3000")
+                .WithMethods("GET", "POST")
+                .WithHeaders("accept", "content-type")
+                .AllowCredentials());
             app.UseStormpath();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
