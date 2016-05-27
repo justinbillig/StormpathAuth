@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   var app = angular.module('app', [
@@ -11,8 +11,7 @@
     'app.login'
   ]);
 
-   app.config(function(STORMPATH_CONFIG){
-         STORMPATH_CONFIG.ENDPOINT_PREFIX = 'http://localhost:53175';
-     });
-
+  app.config(function (STORMPATH_CONFIG) {
+    STORMPATH_CONFIG.ENDPOINT_PREFIX = 'http://localhost:53255';
+  });
 })();
