@@ -8,7 +8,7 @@ using Stormpath.AspNet;
 
 namespace AppServer2.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values

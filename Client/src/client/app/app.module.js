@@ -12,6 +12,6 @@
   ]);
 
   app.config(function (STORMPATH_CONFIG) {
-    STORMPATH_CONFIG.ENDPOINT_PREFIX = 'http://localhost:53255';
+    STORMPATH_CONFIG.ENDPOINT_PREFIX = 'http://localhost:51083';
   });
 })();

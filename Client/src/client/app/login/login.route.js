@@ -22,7 +22,7 @@
             controllerAs: 'vm',
             title: 'login',
             settings: {
-              nav: 4,
+              nav: 2,
               content: '<i class="fa fa-dashboard"></i> Login'
             }
           }
