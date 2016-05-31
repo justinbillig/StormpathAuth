@@ -26,7 +26,7 @@
             content: '<i class="fa fa-lock"></i> Values'
           },
           sp: {
-            authenticate: false
+            authenticate: true
           }
         }
       }
