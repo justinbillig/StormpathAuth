@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Stormpath.AspNet;
 
 namespace AppServer2.Controllers
 {
@@ -13,7 +14,13 @@ namespace AppServer2.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            // Stormpath Client and Account can be pulled from the request
+            //var client = Request.GetStormpathClient();
+            //var account = Request.GetStormpathAccount();
+            //var configuration = Request.GetStormpathConfiguration();
+            //var application = Request.GetStormpathApplication();
+
+            return new [] { "value1", "value2" };
         }
 
         // GET api/values/5
