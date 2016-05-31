@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
+using Stormpath.AspNet;
 
 [assembly: OwinStartup(typeof(AppServer2.Startup))]
 
@@ -12,7 +10,7 @@ namespace AppServer2
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.UseStormpath();
         }
     }
 }
