@@ -11,8 +11,6 @@ namespace AppServer2
     {
         public void Configuration(IAppBuilder app)
         {
-            //  app.UseCors();
-
             app.UseStormpath();
         }
     }
