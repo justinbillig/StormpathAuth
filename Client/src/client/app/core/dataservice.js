@@ -5,9 +5,9 @@
     .module('app.core')
     .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$http', '$q', 'exception', 'logger'];
+  dataservice.$inject = ['$http', '$q', 'exception', 'logger', 'config'];
   /* @ngInject */
-  function dataservice($http, $q, exception, logger) {
+  function dataservice($http, $q, exception, logger, config) {
     var service = {
       getPeople: getPeople,
       getMessageCount: getMessageCount,
@@ -33,7 +33,7 @@
     }
 
     function getValues() {
-      return $http.get('http://localhost:51083/api/values')
+      return $http.get(config.urlPrefix + '/api/values')
         .then(success)
         .catch(fail);
 
