@@ -11,22 +11,12 @@ using Stormpath.Configuration.Abstractions;
 namespace AppServer2
 {
     using System.Web.Http;
-    using AppFunc = Func<IDictionary<string, object>, Task>;
-
+    using Microsoft.Owin.Cors;
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            app.Use(new Func<AppFunc, AppFunc>(next => (async env =>
-            {
-                if ((string)env["owin.RequestMethod"] != "OPTIONS")
-                {
-                    await next.Invoke(env);
-                    return;
-                }
-
-                return;
-            })));
+            app.UseCors(CorsOptions.AllowAll);
 
             app.UseStormpath(new StormpathConfiguration
             {
