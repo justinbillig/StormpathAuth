@@ -13,8 +13,8 @@ namespace AppServer2
     {
         public void Configuration(IAppBuilder app)
         {
-            // Need to rewrite this as a more restrictive CorsPolicy
-            app.UseCors(CorsOptions.AllowAll);
+            // Add CORS first so it applies to Stormpath middleware and Web API
+            ConfigureCors(app);
 
             // Add Stormpath security middleware before Web API
             app.UseStormpath(new StormpathConfiguration

@@ -278,6 +278,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.Cors.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
