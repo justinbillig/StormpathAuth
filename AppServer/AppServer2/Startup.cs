@@ -17,13 +17,7 @@ namespace AppServer2
             ConfigureCors(app);
 
             // Add Stormpath security middleware before Web API
-            app.UseStormpath(new StormpathConfiguration
-            {
-                Application = new ApplicationConfiguration
-                {
-                    Name = "My Application"
-                }
-            });
+            app.UseStormpath();
 
             // Add Web API
             var config = new HttpConfiguration();
