@@ -13,7 +13,10 @@ namespace AppServer2
     {
         public static void Register(HttpConfiguration config)
         {
+            // Suppress default authentication, and add exactly the authentication method we want to use.
+            // The Stormpath OWIN middleware can use either Cookie or Bearer authentication.
             config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter("Cookie"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
