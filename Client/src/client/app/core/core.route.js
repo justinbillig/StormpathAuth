@@ -12,6 +12,7 @@
 
     $stormpath.uiRouter({
       loginState: 'login',
+      defaultPostLoginState: 'values'
     });
   }
 
