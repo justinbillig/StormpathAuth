@@ -12,7 +12,6 @@
 
     $stormpath.uiRouter({
       loginState: 'login',
-      defaultPostLoginState: 'dashboard'
     });
   }
 

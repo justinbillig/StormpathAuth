@@ -23,7 +23,7 @@
             title: 'login',
             settings: {
               nav: 2,
-              content: '<i class="fa fa-dashboard"></i> Login'
+              content: '<i class="fa fa-login"></i> Login'
             }
           }
         }

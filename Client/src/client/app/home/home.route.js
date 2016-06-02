@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.admin')
+    .module('app.home')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -14,16 +14,16 @@
   function getStates() {
     return [
       {
-        state: 'admin',
+        state: 'home',
         config: {
-          url: '/admin',
-          templateUrl: 'app/admin/admin.html',
-          controller: 'AdminController',
+          url: '/',
+          templateUrl: 'app/home/home.html',
+          controller: 'HomeController',
           controllerAs: 'vm',
-          title: 'Admin',
+          title: 'Home',
           settings: {
             nav: 1,
-            content: '<i class="fa fa-cog"></i> Admin'
+            content: '<i class="fa fa-home"></i> Home'
           },
           sp: {
             authenticate: false
