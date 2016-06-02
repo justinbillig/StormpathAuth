@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
@@ -14,15 +13,10 @@ namespace AppServer2
     {
         public static void Register(HttpConfiguration config)
         {
-            // Allow CORS for all WebAPI calls.
-            config.EnableCors(new EnableCorsAttribute(ConfigurationManager.AppSettings["CorsOrigins"], 
-                                                        ConfigurationManager.AppSettings["CorsHeaders"], 
-                                                        ConfigurationManager.AppSettings["CorsMethods"]));
-
-            // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
+            // Suppress default authentication, and add exactly the authentication method we want to use.
+            // The Stormpath OWIN middleware can use either Cookie or Bearer authentication.
             config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.Filters.Add(new HostAuthenticationFilter("Cookie"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
