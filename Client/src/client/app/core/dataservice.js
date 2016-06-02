@@ -1,49 +1,48 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('app.core')
-    .factory('dataservice', dataservice);
+    angular
+        .module('app.core')
+        .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$http', '$q', 'exception', 'logger', 'config'];
-  /* @ngInject */
-  function dataservice($http, $q, exception, logger, config) {
-    var service = {
-      getPeople: getPeople,
-      getMessageCount: getMessageCount,
-      getValues: getValues
-    };
+    dataservice.$inject = ['$http', '$q', 'exception', 'logger', 'config'];
+    /* @ngInject */
+    function dataservice($http, $q, exception, logger, config) {
+        var service = {
+            // Breaks if this changed to 'getMvcValues'.
+            getValues: getWebApiValues
+        };
 
-    return service;
+        return service;
 
-    function getMessageCount() { return $q.when(72); }
+        // Get values from a WebAPI controller.
+        function getWebApiValues() {
+            return $http.get(config.urlPrefix + '/api/values')
+                .then(success)
+                .catch(fail);
 
-    function getPeople() {
-      return $http.get('/api/people')
-        .then(success)
-        .catch(fail);
+            function success(response) {
+                return response.data;
+            }
 
-      function success(response) {
-        return response.data;
-      }
+            function fail(e) {
+                return exception.catcher('XHR Failed for getValues')(e);
+            }
+        }
 
-      function fail(e) {
-        return exception.catcher('XHR Failed for getPeople')(e);
-      }
+        // Get values from an MVC controller.
+        function getMvcValues() {
+            return $http.get(config.urlPrefix + '/home/morevalues')
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                return response.data;
+            }
+
+            function fail(e) {
+                return exception.catcher('XHR Failed for getValues')(e);
+            }
+        }
     }
-
-    function getValues() {
-      return $http.get(config.urlPrefix + '/api/values')
-        .then(success)
-        .catch(fail);
-
-      function success(response) {
-        return response.data;
-      }
-
-      function fail(e) {
-        return exception.catcher('XHR Failed for getValues')(e);
-      }
-    }
-  }
 })();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace AppServer2.Controllers
 {
@@ -13,6 +9,14 @@ namespace AppServer2.Controllers
             ViewBag.Title = "Home Page";
 
             return View();
+        }
+
+        [Authorize]
+        public JsonResult MoreValues()
+        {
+            var values = new[] {"value1", "value2", "value3"};
+
+            return Json(values);
         }
     }
 }
